@@ -44,3 +44,9 @@ def test_get_lines_slice():
     assert test_matrix[0:2] == Matrix((5, 2),
                                       [1, 2, 3, 4, 5,
                                        5, 4, 3, 2, 1])
+    assert test_matrix[:2] == Matrix((5, 2),
+                                      [1, 2, 3, 4, 5,
+                                       5, 4, 3, 2, 1])
+    assert test_matrix[1:] == Matrix((5, 1),
+                                      [1, 2, 3, 4, 5])
+    print(test_matrix[1:])

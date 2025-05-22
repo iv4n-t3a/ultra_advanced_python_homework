@@ -43,7 +43,8 @@ class Matrix(Tensor):
                 return self.data[idx * self.dimension[0]: (idx + 1) * self.dimension[0]]
 
             case builtins.list:
-                return list(itertools.chain.from_iterable(self[i] for i in key))
+                items = list(itertools.chain.from_iterable(self[i] for i in key))
+                return Matrix.__itemsToMatrix(items)
 
             case builtins.tuple:
                 if len(key) != 2:
@@ -72,8 +73,12 @@ class Matrix(Tensor):
 
     @staticmethod
     def __itemsToMatrix(items):
+        if isinstance(items, int):
+            return items
         if len(items) == 1:
             return items[0]
+        if isinstance(items[0], int):
+            return Matrix((len(items), 1), items)
         return Matrix((len(items[0]), len(items)), [num for row in items for num in row])
 
     @staticmethod
@@ -93,6 +98,6 @@ class Matrix(Tensor):
 
     @staticmethod
     def __getIntIndex(index, size):
-        if index <= -size or index >= size:
-            raise IndexError('Matrix index out of range')
+        # if index <= -size or index >= size:
+        #     raise IndexError('Matrix index out of range')
         return index % size

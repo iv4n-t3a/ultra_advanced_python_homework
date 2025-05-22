@@ -1,11 +1,11 @@
-# Ultra advanced level python homework
+## Репозиторий с дз по курсу aDvAnCe pYtHon с НуЛя До СенИорА ~~скилбокс~~ ВШПИ МФТИ
 
-To setup test environment:
+В каждой задаче есть requirements.txt, надо установить зависимости из него
 
     python3 -m venv env
     . ./env/bin/activate
     pip3 install -r requirements.txt
 
-Run tests:
+В каталоге `src` задач tensor и singleton есть файл с тестами. Запускается через `pytest`
 
     pytest src/test.py
