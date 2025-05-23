@@ -1,4 +1,4 @@
-from base_singleton import BaseSingleton
+from singleton_metaclass import SingletonMeta
 from singleton_decorator import singleton_decorator
 from singleton_class_variable import SingletonClass
 
@@ -13,7 +13,7 @@ def test_singleton_class_variable():
 
 
 def test_base_singleton():
-    class InheritSingletonClass(BaseSingleton):
+    class InheritSingletonClass(metaclass=SingletonMeta):
         pass
 
     instance1 = InheritSingletonClass()
@@ -25,10 +25,10 @@ def test_base_singleton():
 
 
 def test_base_singleton_different_classes():
-    class InheritSingletonClass1(BaseSingleton):
+    class InheritSingletonClass1(metaclass=SingletonMeta):
         pass
 
-    class InheritSingletonClass2(BaseSingleton):
+    class InheritSingletonClass2(metaclass=SingletonMeta):
         pass
 
     instance1 = InheritSingletonClass1()
